@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.example.tour.Model.AdvanceStepOption;
 import com.example.tour.Model.AttachToOption;
 import com.example.tour.Model.Button;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -15,25 +16,23 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = "tour_steps")
 public class TourStep {
 	@Id
 	private String id; // Automatically handled by MongoDB
 
-	@JsonProperty("stepId")
-	private String stepId;
-
-	@JsonProperty("title")
+	@JsonProperty("title") // Maps JSON "title" to the title field
 	private String title;
 
-	@JsonProperty("attachTo")
+	@JsonProperty("text") // Maps JSON "text" to the text field
+	private String text;
+
+	@JsonProperty("attachTo") // Maps the "attachTo" JSON object to the AttachTo object
 	private AttachToOption attachTo;
 
-	@JsonProperty("elementSelector")
+	@JsonProperty("advanceOn") // Maps the "advanceOn" JSON object to the AdvanceOn object
 	private AdvanceStepOption advanceOn;
-
-	@JsonProperty("placement")
-	private String placement;
 
 	@JsonProperty("arrow")
 	private boolean arrow;
@@ -41,8 +40,20 @@ public class TourStep {
 	@JsonProperty("buttons")
 	private List<Button> buttons;
 
-	@JsonProperty("highlight")
-	private boolean highlight;
+	@JsonProperty("cancelIcon")
+	private boolean cancelIcon;
+
+	@JsonProperty("classes")
+	private String classes;
+
+	@JsonProperty("extraHighlights")
+	private List<String> extraHighlights;
+
+	@JsonProperty("highlightClass")
+	private String highlightClass;
+
+	@JsonProperty("scrollTo")
+	private boolean scrollTo;
 
 	/*		*//**
 				 * The element the step should be attached to on the page. An object with

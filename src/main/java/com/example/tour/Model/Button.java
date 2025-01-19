@@ -1,5 +1,6 @@
 package com.example.tour.Model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -7,11 +8,26 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Button {
+
+	@JsonProperty("action")
+	private String action; // Can store the action name as a string or method name
+
+	@JsonProperty("classes")
+	private String classes; // Extra classes for the button
+
+	@JsonProperty("disabled")
+	private Boolean disabled; // Whether the button is disabled
+
+	@JsonProperty("label")
+	private String label; // The aria-label text of the button
+
+	@JsonProperty("secondary")
+	private Boolean secondary; // Whether it's a secondary button
+
 	@JsonProperty("text")
 	private String text;
-	@JsonProperty("action")
-	private String action;
 
 	/**
 	 * A function executed when the button is clicked on It is automatically bound
