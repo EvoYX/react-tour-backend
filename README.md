@@ -86,5 +86,3 @@
 
 - **7.4. CSS Refining**  
   - Refine the custom styles for the React Shepherd tour to ensure it looks good and aligns with the overall UI.
-
-By breaking it down into these phases, you’ll have clear milestones to work toward, and each task will feel less overwhelming. You can also tackle each phase one at a time to maintain focus. Let me know if you need help with any specific phase or task!
